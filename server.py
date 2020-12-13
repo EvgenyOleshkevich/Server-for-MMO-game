@@ -34,7 +34,7 @@ def update(message):
     result = {}
     if message.data:
         print(message.data)
-    emit('update', result)
+    emit('update', message)
 
 if __name__ == '__main__':
     print("Running server! Visit http://127.0.0.1:5000/ for api")
