@@ -4,6 +4,8 @@ from flask_socketio import SocketIO, emit
 from threading import Timer
 import uuid
 
+active_users = set()
+
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret!'
 socketio = SocketIO(app)
@@ -12,12 +14,28 @@ socketio = SocketIO(app)
 def index():
     return render_template('index.html')
 
-@socketio.on('hit')
-def test_message(data):
-    print(data)
-    emit('hit', {
-        data: hit(data)
+@socketio.on('get_uid')
+def generate_uid():
+    uid = str(uuid.uuid4())
+    active_users.add(uid)
+    emit('uid', {
+        "uid": uid
     })
 
+@socketio.on('hit')
+def test_message(message):
+    print(message)
+    emit('hit', {
+        "data": hit(message["data"])
+    })
+
+@socketio.on('update')
+def update(message):
+    result = {}
+    if message.data:
+        print(message.data)
+    emit('update', result)
+
 if __name__ == '__main__':
-    socketio.run(app)
+    print("Running server! Visit http://127.0.0.1:5000/ for api")
+    socketio.run(app, host="0.0.0.0")
