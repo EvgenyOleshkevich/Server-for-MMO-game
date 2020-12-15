@@ -33,7 +33,7 @@ def test_message(message):
 def update(message):
     result = {}
     if message.data:
-        print(message.data)
+        print(str(message.data))
     emit('update', message)
 
 if __name__ == '__main__':
