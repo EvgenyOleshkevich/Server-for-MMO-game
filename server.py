@@ -2,7 +2,13 @@ from main import *
 from flask import Flask, render_template
 from flask_socketio import SocketIO, emit
 from threading import Timer
+from constants import *
 import uuid
+
+Players = {}
+
+def handleUpdate(data):
+    0
 
 active_users = set()
 
@@ -14,9 +20,13 @@ socketio = SocketIO(app)
 def index():
     return render_template('index.html')
 
-@socketio.on('get_uid')
-def generate_uid():
+@socketio.on('generate_new_player')
+def generate_new_player(data):
     uid = str(uuid.uuid4())
+    Players[uid] = Player(uuid,
+        data["x"] if data["x"] else 0, 
+        data["y"] if data["y"] else 0,
+        INITIAL_HP)
     active_users.add(uid)
     emit('uid', {
         "uid": uid
@@ -31,7 +41,7 @@ def test_message(message):
 
 @socketio.on('update')
 def update(message):
-    result = {}
+    handleUpdate(message)
     if message.data:
         print(str(message.data))
     emit('update', message)

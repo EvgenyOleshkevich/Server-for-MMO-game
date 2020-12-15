@@ -1,0 +1,1 @@
+INITIAL_HP = 100
