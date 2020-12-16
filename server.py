@@ -74,7 +74,8 @@ def update(data):
             "angle": player.angle_view(),
             "hp": player.HP()
         })
-
+    result["event"] = PlayersEvents[data["id"]]
+    PlayersEvents[data["id"]] = []
     emit('update', result)
 
 if __name__ == '__main__':
