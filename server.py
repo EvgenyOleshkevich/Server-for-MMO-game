@@ -61,6 +61,7 @@ def stub(data):
 
 @socketio.on('update')
 def update(data):
+    data = json.loads(data)
     handleUpdate(data)
     if data:
         print(str(data), type(data))
