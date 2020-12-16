@@ -28,7 +28,7 @@ def hit(player, players, angle):
     print('cos: ', cos_angle, 'sin: ', sin_angle)
     dist_square = 1000000
     hited_enemy = None
-    test = [-1,-1]
+    
     for key, enemy in players:
         if (enemy.ID() == player.ID()):
             continue
