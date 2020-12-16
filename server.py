@@ -42,6 +42,7 @@ def index():
 @socketio.on('generate_new_player')
 def generate_new_player(data):
     uid = str(uuid.uuid4())
+    data = json.loads(data)
     Players[uid] = Player(uuid,
         data["x"] if data["x"] else 0, 
         data["y"] if data["y"] else 0,
@@ -55,7 +56,7 @@ def generate_new_player(data):
 @socketio.on('stub')
 def stub(data):
     print(data)
-    emit('stub', data)
+    emit('stub', json.loads(data))
 
 @socketio.on('update')
 def update(data):
