@@ -1,17 +1,30 @@
 import math
 
 class Player:
-    def __init__(self, id, x, y, hp):
+    def __init__(self, id, x, y, hp, angle_view):
         self.id = id
         self.x = x
         self.y = y
         self.hp =hp
+        self.angle_view = angle_view
         
     def X(self):
         return self.x
     
     def Y(self):
         return self.y
+    
+    def AngleView(self):
+        return self.angle_view
+    
+    def SetX(self, x):
+        return self.x = x
+    
+    def SetY(self, y):
+        return self.y = y
+    
+    def SetAngleView(self, angle_view):
+        return self.angle_view = angle_view
     
     def ID(self):
         return self.id
@@ -21,6 +34,9 @@ class Player:
     
     def Decrease_HP(self, value):
         self.hp = min(self.hp - value, 0)
+        
+    def Increase_HP(self, value):
+        self.hp = max(self.hp + value, 100)
 
 def hit(player, players, angle):
     cos_angle = math.cos(angle)
