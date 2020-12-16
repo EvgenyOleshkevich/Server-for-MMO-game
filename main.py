@@ -29,7 +29,7 @@ def hit(player, players, angle):
     dist_square = 1000000
     hited_enemy = None
     test = [-1,-1]
-    for enemy in players:
+    for key, enemy in players:
         if (enemy.ID() == player.ID()):
             continue
         x = enemy.X() - player.X()
