@@ -63,7 +63,7 @@ def test_message(message):
 def update(data):
     handleUpdate(data)
     if data:
-        print(str(data))
+        print(str(data), type(data))
     result = {
         "players": []
     }
