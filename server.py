@@ -52,6 +52,11 @@ def generate_new_player(data):
         "uid": uid
     })
 
+@socketio.on('stub')
+def stub(data):
+    print(data)
+    emit('stub', data)
+
 @socketio.on('update')
 def update(data):
     handleUpdate(data)
