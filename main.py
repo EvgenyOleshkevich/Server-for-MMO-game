@@ -18,13 +18,13 @@ class Player:
         return self.angle_view
     
     def SetX(self, x):
-        return self.x = x
+        self.x = x
     
     def SetY(self, y):
-        return self.y = y
+        self.y = y
     
     def SetAngleView(self, angle_view):
-        return self.angle_view = angle_view
+        self.angle_view = angle_view
     
     def ID(self):
         return self.id
