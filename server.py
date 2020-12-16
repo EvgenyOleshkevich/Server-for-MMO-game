@@ -15,9 +15,9 @@ def handleUpdate(data):
     angle = data["angle"]
     updater_player = Players[id]
     # рассчитать действия игрока и отослать результаты
-    updater_player.SetX(data["x"] if data["x"] else updater_player.X())
-    updater_player.SetY(data["y"] if data["y"] else updater_player.Y())
-    updater_player.SetAngleView(data["angle"] if data["angle"] else updater_player.angle_view())
+    updater_player.SetX(data.get("x", updater_player.X()))
+    updater_player.SetY(data.get("y", updater_player.X()))
+    updater_player.SetAngleView(data.get("angle", updater_player.angle_view()))
 
     if (data["shot"] == True):
         distance, enemy = hit(updater_player, Players, angle)
@@ -44,8 +44,8 @@ def generate_new_player(data):
     uid = str(uuid.uuid4())
     data = json.loads(data)
     Players[uid] = Player(uuid,
-        data["x"] if data["x"] else 0, 
-        data["y"] if data["y"] else 0,
+        data.get("x", 0), 
+        data.get("y", 0),
         INITIAL_HP)
     PlayersEvents[uid] = []
     active_users.add(uid)
