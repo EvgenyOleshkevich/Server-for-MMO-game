@@ -46,7 +46,8 @@ def generate_new_player(data):
     Players[uid] = Player(uuid,
         data.get("x", 0), 
         data.get("y", 0),
-        INITIAL_HP)
+        INITIAL_HP,
+        data.get("angle_view", 0))
     PlayersEvents[uid] = []
     active_users.add(uid)
     emit('uid', {
