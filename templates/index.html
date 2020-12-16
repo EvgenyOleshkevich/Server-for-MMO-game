@@ -4,8 +4,15 @@
 	<title>MMO game documentation</title>
 </head>
 <body>
-	<div class="main-container">
-        Here is the api for our websockets app.
-    </div>
+	<p class="main-container">
+        Initially you must invoke <code>generate_new_player</code> event.
+            returns: <code>{"uid": uid (as string)}</code>
+        <code>update</code> event expects
+            Json with data <code>{"id": uid, "x": num, "y": num, "angle": num, "shot": bool}</code>
+        Returns <code>
+            {"players": arrayOf([ "x", "y", "angle", "id" ], "events": arrayOf(["shot": true]))}
+        </code> 
+        Most of times array events will be empty.
+    </p>
 </body>
 </html>

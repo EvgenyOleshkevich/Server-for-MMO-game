@@ -52,13 +52,6 @@ def generate_new_player(data):
         "uid": uid
     })
 
-@socketio.on('hit')
-def test_message(message):
-    print(message)
-    emit('hit', {
-        "data": hit(message["data"])
-    })
-
 @socketio.on('update')
 def update(data):
     handleUpdate(data)
@@ -72,7 +65,8 @@ def update(data):
             "x": player.X(),
             "y": player.Y(),
             "angle": player.angle_view(),
-            "hp": player.HP()
+            "hp": player.HP(),
+            "id": player.ID()
         })
     result["event"] = PlayersEvents[data["id"]]
     PlayersEvents[data["id"]] = []
