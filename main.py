@@ -73,7 +73,7 @@ def is_cross(cut1, cut2):
     return px, py
 
 def wall_shot(shot, box):
-    dist_hit = None # максимальное число
+    dist_hit = ((shot[1][0]-shot[0][0])**2 + (shot[1][1]-shot[0][1])**2) * 2
     for cut in box:
         print(shot)
         print(cut)
@@ -87,7 +87,7 @@ def wall_shot(shot, box):
     
 
 def nearest_wall_shot(shot, boxes):
-    dist_hit = None # максимальное число
+    dist_hit = ((shot[1][0]-shot[0][0])**2 + (shot[1][1]-shot[0][1])**2) * 2
     for box in boxes:
         dist = wall_shot(shot, box)
         if (dist_hit is None) or (dist_hit > dist):
