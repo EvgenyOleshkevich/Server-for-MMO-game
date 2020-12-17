@@ -78,6 +78,7 @@ def update(data):
             "id": player.ID()
         })
     result["event"] = PlayersEvents[data["id"]]
+    print(str(result))
     PlayersEvents[data["id"]] = []
     emit('update', result)
 
