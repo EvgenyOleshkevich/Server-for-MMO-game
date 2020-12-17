@@ -17,7 +17,7 @@ def handleUpdate(data):
     # рассчитать действия игрока и отослать результаты
     updater_player.SetX(data.get("x", updater_player.X()))
     updater_player.SetY(data.get("y", updater_player.X()))
-    updater_player.SetAngleView(0)
+    updater_player.SetAngleView(data.get("angle", updater_player.AngleView()))
 
     if (data["shot"] == True):
         distance, enemy = hit(updater_player, Players, angle)
@@ -73,7 +73,7 @@ def update(data):
             "id": uid,
             "x": player.X(),
             "y": player.Y(),
-            "angle": player.angle_view(),
+            "angle": player.AngleView(),
             "hp": player.HP(),
             "id": player.ID()
         })
