@@ -43,7 +43,7 @@ def index():
 def generate_new_player(data):
     uid = str(uuid.uuid4())
     data = json.loads(data)
-    Players[uid] = Player(uuid,
+    Players[uid] = Player(uid,
         data.get("x", 0), 
         data.get("y", 0),
         INITIAL_HP,
@@ -70,7 +70,6 @@ def update(data):
     }
     for id, player in Players.items():
         result["players"].append({
-            "id": id,
             "x": player.X(),
             "y": player.Y(),
             "angle": player.AngleView(),
