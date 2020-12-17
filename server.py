@@ -68,8 +68,9 @@ def update(data):
     result = {
         "players": []
     }
-    for player in Players:
+    for uid, player in Players.items():
         result["players"].append({
+            "id": uid,
             "x": player.X(),
             "y": player.Y(),
             "angle": player.angle_view(),
