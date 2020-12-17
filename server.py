@@ -8,7 +8,7 @@ import uuid
 
 Players = {}
 PlayersEvents = {}
-boxes = []
+boxes
 
 def handleUpdate(data):
     id = data["id"]
@@ -17,7 +17,7 @@ def handleUpdate(data):
     # рассчитать действия игрока и отослать результаты
     updater_player.SetX(data.get("x", updater_player.X()))
     updater_player.SetY(data.get("y", updater_player.X()))
-    updater_player.SetAngleView(data.get("angle", updater_player.angle_view()))
+    updater_player.SetAngleView(0)
 
     if (data["shot"] == True):
         distance, enemy = hit(updater_player, Players, angle)
@@ -47,7 +47,7 @@ def generate_new_player(data):
         data.get("x", 0), 
         data.get("y", 0),
         INITIAL_HP,
-        data.get("angle_view", 0))
+        data.get("angle_view", 0.0))
     PlayersEvents[uid] = []
     active_users.add(uid)
     emit('uid', {
