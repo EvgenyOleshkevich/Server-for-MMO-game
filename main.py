@@ -109,3 +109,18 @@ def nearest_wall_shot(shot, boxes):
         if (dist_hit is None) or (dist_hit > dist):
             dist_hit = dist
     return dist_hit
+
+
+def box_to_cuts(box):
+    result = []
+    print(box)
+    for i in [1, -1]:
+        for j in [1, -1]:
+            temp1 = []       
+            temp1.append( box["x"] + i * box["width"] / 2)
+            temp1.append( box["y"] + j * box["length"] / 2)
+            temp2 = []
+            temp2.append( box["x"] - i * box["width"] / 2)
+            temp2.append( box["y"] - j * box["length"] / 2)
+            result.append([temp1,temp2])
+    return result
