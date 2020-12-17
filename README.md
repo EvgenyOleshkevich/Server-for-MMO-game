@@ -1,2 +1,2 @@
 # Server-for-MMO-game
-Server for MMO game - our study project
+To run server write ```python server.py```
