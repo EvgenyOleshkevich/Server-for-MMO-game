@@ -11,6 +11,7 @@ PlayersEvents = {}
 boxes
 
 def handleUpdate(data):
+    
     id = data["id"]
     angle = data["angle"]
     updater_player = Players[id]
